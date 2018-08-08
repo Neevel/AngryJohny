@@ -10,13 +10,13 @@ public class AJGame extends Game {
 	
 	@Override
 	public void create() {
-		batch = new SpriteBatch();
-		setScreen(new GameState());
+		batch = new SpriteBatch(); // verwaltet einen Buffer 
+		setScreen(new GameState()); 
 	}
 	
 	@Override
 	public void dispose() {
-		batch.dispose();
+		batch.dispose(); // nach dem zeichnen wird die batch sozusagen entsorgt 
 	}
 	
 	public SpriteBatch getBatch() {

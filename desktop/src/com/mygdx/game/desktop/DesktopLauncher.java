@@ -9,10 +9,10 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		// LWGL ist ein Wrapper über OPENGL
 		// LibGdx ist ein Wrapper über Lwjgl
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration(); // Verknüpfung zu OpenGL, OpenAl und OpenCl
 		config.title = Constants.TITLE;
 		config.width = Constants.WIDTH;
 		config.height = Constants.HEIGHT;
-		new LwjglApplication(new AJGame(), config);
+		new LwjglApplication(new AJGame(), config); 
 	}
 }

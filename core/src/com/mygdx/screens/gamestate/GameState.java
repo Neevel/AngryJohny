@@ -36,6 +36,7 @@ public class GameState extends ScreenAdapter{
 	@Override
 	public void resize(int width, int height) {
 		gameworld.resize(width, height);
+		
 	}
 
 }
