@@ -2,7 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.screens.gamestate.GameScreen;
+import com.mygdx.screens.gamestate.GameState;
 
 
 public class AJGame extends Game {
@@ -11,7 +11,7 @@ public class AJGame extends Game {
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
-		setScreen(new GameScreen());
+		setScreen(new GameState());
 	}
 	
 	@Override
@@ -22,5 +22,6 @@ public class AJGame extends Game {
 	public SpriteBatch getBatch() {
 		return batch;
 	}
+	
 	
 }
