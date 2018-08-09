@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.AJGame;
+import com.mygdx.util.Box2DUtils;
 import com.mygdx.util.Constants;
 
 
@@ -22,6 +24,7 @@ public class GameWorld {
 	private Box2DDebugRenderer b2renderer; 
 	
 	private Body player;
+	private Body ground;
 	
 	
 	public GameWorld() {
@@ -29,9 +32,12 @@ public class GameWorld {
 		gameCam = new OrthographicCamera(); 
 		viewport = new FitViewport(Constants.V_WIDTH , Constants.V_HEIGHT, gameCam); 
 		world = new World(Constants.GRAVITY, true); 
+		player = Box2DUtils.createPlayer(world, new Vector2(7, 10), 1, 1);
+		ground = Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 1), Constants.V_WIDTH, 1);
+			
 		b2renderer = new Box2DDebugRenderer(); 
 		
-		//player = Box2DUtils.createPlayer();
+		
 	}
 
 	public void render(float delta) {
