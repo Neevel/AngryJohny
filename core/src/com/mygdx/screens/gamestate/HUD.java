@@ -16,7 +16,7 @@ public class HUD {
 	public HUD(GameWorld gameworld) {
 		this.gameworld = gameworld;
 		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		stage = new Stage(viewport, ((AJGame) Gdx.app.getApplicationListener()).getBatch()); //
+		stage = new Stage(viewport, ((AJGame) Gdx.app.getApplicationListener()).getBatch());
 	}
 	
 	public void dispose() {
