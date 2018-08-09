@@ -31,7 +31,7 @@ public class GameWorld {
 		world = new World(Constants.GRAVITY, true); 
 		b2renderer = new Box2DDebugRenderer(); 
 		
-		player = Box2DUtils.createPlayer();
+		//player = Box2DUtils.createPlayer();
 	}
 
 	public void render(float delta) {
