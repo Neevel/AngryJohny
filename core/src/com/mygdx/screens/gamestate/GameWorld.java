@@ -10,11 +10,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.AJGame;
-import com.mygdx.util.constants.Constants;
+import com.mygdx.util.Constants;
 
 
 public class GameWorld {
-	private Texture tex; 
+	
 	private SpriteBatch batch; 
 	private Camera gameCam; 
 	private Viewport viewport; 
@@ -23,7 +23,6 @@ public class GameWorld {
 	
 	
 	public GameWorld() {
-		tex = new Texture(Gdx.files.internal("1.png")); 
 		batch = ((AJGame) Gdx.app.getApplicationListener()).getBatch(); 
 		gameCam = new OrthographicCamera(); 
 		viewport = new FitViewport(Constants.V_WIDTH , Constants.V_HEIGHT, gameCam); 
@@ -39,18 +38,21 @@ public class GameWorld {
 		gameCam.update();
 		
 		world.step(Constants.TIME_STEP, 8, 3); // 
+		
 		b2renderer.render(world, viewport.getCamera().combined);
-		batch.setProjectionMatrix(viewport.getCamera().combined);
-		batch.begin();
-			batch.draw(tex, 0, 0,viewport.getWorldWidth() ,viewport.getWorldHeight());
-		batch.end();
+		
+//		batch.setProjectionMatrix(viewport.getCamera().combined);
+//		batch.begin();
+//			
+//		batch.end();
 	}
 	
 	public void update(float delta) {
-		System.out.println("UPDATE");
-	}
-	public void dispose() {
 		
+	}
+	
+	public void dispose() {
+				
 	}
 	public void  resize(int width, int height) {
 		viewport.update(width, height, true);
