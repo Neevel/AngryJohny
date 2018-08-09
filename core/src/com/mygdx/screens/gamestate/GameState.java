@@ -14,6 +14,8 @@ public class GameState extends ScreenAdapter{
 	public void show() {
 		gameworld = new GameWorld();
 		hud = new HUD(gameworld);
+
+
 		
 	}
 	
