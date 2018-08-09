@@ -3,8 +3,8 @@ package com.mygdx.screens.gamestate;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -21,6 +21,8 @@ public class GameWorld {
 	private World world; 
 	private Box2DDebugRenderer b2renderer; 
 	
+	private Body player;
+	
 	
 	public GameWorld() {
 		batch = ((AJGame) Gdx.app.getApplicationListener()).getBatch(); 
@@ -29,6 +31,7 @@ public class GameWorld {
 		world = new World(Constants.GRAVITY, true); 
 		b2renderer = new Box2DDebugRenderer(); 
 		
+		player = Box2DUtils.createPlayer();
 	}
 
 	public void render(float delta) {

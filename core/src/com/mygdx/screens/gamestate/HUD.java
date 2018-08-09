@@ -17,6 +17,8 @@ public class HUD {
 		this.gameworld = gameworld;
 		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		stage = new Stage(viewport, ((AJGame) Gdx.app.getApplicationListener()).getBatch());
+		
+		createHUD();
 	}
 	
 	public void dispose() {
@@ -33,6 +35,10 @@ public class HUD {
 
 	public void resize(int width, int height) {
 		stage.getViewport().update(width, height, true);
+	}
+	
+	private void createHUD() {
+		
 	}
 
 }
