@@ -14,6 +14,7 @@ public abstract class Entity {
 	public Entity(Body body) {
 		this.body = body;
 		this.position = body.getPosition();
+		body.setUserData(this);
 	}
 	
 	protected abstract void update(float delta);

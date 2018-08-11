@@ -3,9 +3,9 @@ package com.mygdx.screens.gamestateö.entities;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 
-public class Player extends Entity {
+public class Ground extends Entity {
 	
-	public Player(Body body) {
+	public Ground(Body body) {
 		super(body);
 	}
 
@@ -16,11 +16,7 @@ public class Player extends Entity {
 
 	@Override
 	protected void render(float delta, SpriteBatch batch) {
-	}
-	
-	public void setX(float xPosition) {
-		position.x = xPosition;
-		body.setTransform(position, 0f);
+		
 	}
 
 }
