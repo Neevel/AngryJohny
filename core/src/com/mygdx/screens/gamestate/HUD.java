@@ -33,19 +33,14 @@ public class HUD {
 	public HUD(GameWorld gameworld) {
 		this.gameworld = gameworld;
 		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		stage = new Stage(viewport, ((AJGame) app.getApplicationListener()).getBatch());
-		skin = new Skin(Gdx.files.internal("uiskin.json"));
-
-
-
-
+		stage = new Stage(viewport);
+		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
 		createHUD();
 	}
 
 
 	public void dispose() {
-		generator.dispose();
 	}
 
 	public void update(float delta) {

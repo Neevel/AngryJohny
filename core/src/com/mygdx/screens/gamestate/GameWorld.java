@@ -17,7 +17,7 @@ import com.mygdx.util.Constants;
 
 public class GameWorld {
 	
-	private SpriteBatch batch; 
+	private SpriteBatch batch;
 	private Camera gameCam; 
 	private Viewport viewport; 
 	private World world; 
@@ -33,11 +33,9 @@ public class GameWorld {
 		viewport = new FitViewport(Constants.V_WIDTH , Constants.V_HEIGHT, gameCam); 
 		world = new World(Constants.GRAVITY, true); 
 		player = Box2DUtils.createPlayer(world, new Vector2(7, 10), 1, 1);
-		ground = Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 1), Constants.V_WIDTH, 1);
+		ground = Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1);
 			
 		b2renderer = new Box2DDebugRenderer(); 
-		
-		
 	}
 
 	public void render(float delta) {
@@ -50,10 +48,10 @@ public class GameWorld {
 		
 		b2renderer.render(world, viewport.getCamera().combined);
 		
-//		batch.setProjectionMatrix(viewport.getCamera().combined);
-//		batch.begin();
-//
-//		batch.end();
+		batch.setProjectionMatrix(viewport.getCamera().combined);
+		batch.begin();
+
+		batch.end();
 	}
 	
 	public void update(float delta) {

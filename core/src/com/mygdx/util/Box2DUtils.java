@@ -16,7 +16,7 @@ public class Box2DUtils {
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		
 		Body body = world.createBody(bdef);
-		createBox(body, width, height, 1, 0, 0);
+		createBox(body, width, height, 1, .75f, 0);
 
 		return body;
 	}
