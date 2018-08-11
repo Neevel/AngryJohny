@@ -11,9 +11,13 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.AJGame;
+import com.mygdx.screens.gamestateö.entities.Player;
 import com.mygdx.util.Box2DUtils;
 import com.mygdx.util.Constants;
 
+// player machen
+// ground machen
+// entity machen
 
 public class GameWorld {
 	
@@ -23,7 +27,7 @@ public class GameWorld {
 	private World world; 
 	private Box2DDebugRenderer b2renderer; 
 	
-	private Body player;
+	private Player player;
 	private Body ground;
 	
 	
@@ -32,7 +36,7 @@ public class GameWorld {
 		gameCam = new OrthographicCamera(); 
 		viewport = new FitViewport(Constants.V_WIDTH , Constants.V_HEIGHT, gameCam); 
 		world = new World(Constants.GRAVITY, true); 
-		player = Box2DUtils.createPlayer(world, new Vector2(7, 10), 1, 1);
+		player = new Player(Box2DUtils.createPlayer(world, new Vector2(7, 10), 1, 1));
 		ground = Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1);
 			
 		b2renderer = new Box2DDebugRenderer(); 
