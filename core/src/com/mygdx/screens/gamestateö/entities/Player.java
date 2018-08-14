@@ -5,22 +5,33 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public class Player extends Entity {
 	
+	private boolean left, right;
+	
 	public Player(Body body) {
 		super(body);
 	}
 
 	@Override
-	protected void update(float delta) {
-		
+	public void update(float delta) {
+		// bewegung
+		if(left) {
+			body.setLinearVelocity(-.75f, 0f);
+		}
+		if(right) {
+			body.setLinearVelocity(.75f, 0f);
+		}
 	}
 
 	@Override
-	protected void render(float delta, SpriteBatch batch) {
+	public void render(float delta, SpriteBatch batch) {
+		// player zeichnen
 	}
 	
-	public void setX(float xPosition) {
-		position.x = xPosition;
-		body.setTransform(position, 0f);
+	public void setLeft(boolean direction) {
+		this.left = direction;
 	}
-
+	
+	public void setRight(boolean direction) {
+		this.right = direction;
+	}
 }

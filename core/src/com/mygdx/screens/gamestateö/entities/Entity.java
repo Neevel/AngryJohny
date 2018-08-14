@@ -17,8 +17,8 @@ public abstract class Entity {
 		body.setUserData(this);
 	}
 	
-	protected abstract void update(float delta);
-	protected abstract void render(float delta, SpriteBatch batch);
+	public abstract void update(float delta);
+	public abstract void render(float delta, SpriteBatch batch);
 
 	public Vector2 getPosition() {
 		return position;

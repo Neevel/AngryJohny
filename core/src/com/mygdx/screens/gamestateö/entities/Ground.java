@@ -10,12 +10,12 @@ public class Ground extends Entity {
 	}
 
 	@Override
-	protected void update(float delta) {
+	public void update(float delta) {
 		
 	}
 
 	@Override
-	protected void render(float delta, SpriteBatch batch) {
+	public void render(float delta, SpriteBatch batch) {
 		
 	}
 

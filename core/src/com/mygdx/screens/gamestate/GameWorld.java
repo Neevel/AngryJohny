@@ -1,7 +1,6 @@
 package com.mygdx.screens.gamestate;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,14 +10,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.AJGame;
+import com.mygdx.screens.gamestateö.entities.GameListener;
 import com.mygdx.screens.gamestateö.entities.Ground;
 import com.mygdx.screens.gamestateö.entities.Player;
 import com.mygdx.util.Box2DUtils;
 import com.mygdx.util.Constants;
-
-// player machen
-// ground machen
-// entity machen
 
 public class GameWorld {
 	
@@ -31,6 +27,7 @@ public class GameWorld {
 	private Player player;
 	private Ground ground;
 	
+	private GameListener input;
 	
 	public GameWorld() {
 		batch = ((AJGame) Gdx.app.getApplicationListener()).getBatch(); 
@@ -41,6 +38,10 @@ public class GameWorld {
 		ground = new Ground(Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1));
 			
 		b2renderer = new Box2DDebugRenderer(); 
+		
+		input = new GameListener(player);
+		
+		Gdx.input.setInputProcessor(input);
 	}
 
 	public void render(float delta) {
@@ -49,8 +50,6 @@ public class GameWorld {
 		
 		gameCam.position.set(player.getPosition(), 0);
 		gameCam.update();
-		
-		world.step(Constants.TIME_STEP, 8, 3); // 
 		
 		b2renderer.render(world, viewport.getCamera().combined);
 		
@@ -61,9 +60,8 @@ public class GameWorld {
 	}
 	
 	public void update(float delta) {
-		if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-			player.setX(player.getPosition().x += .5f);
-		}
+		player.update(delta);
+		world.step(Constants.TIME_STEP, 8, 3);
 	}
 	
 	public void dispose() {
