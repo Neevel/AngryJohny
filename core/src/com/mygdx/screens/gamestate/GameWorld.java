@@ -37,7 +37,8 @@ public class GameWorld {
 		world = new World(Constants.GRAVITY, true); 
 		player = new Player(Box2DUtils.createPlayer(world, new Vector2(3, 5), 1, 1));
 		ground = new Ground(Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1));
-			
+		
+				
 		b2renderer = new Box2DDebugRenderer(); 
 		
 		input = new GameListener(player);
@@ -49,8 +50,8 @@ public class GameWorld {
 	public void render(float delta) {
 		Gdx.gl20.glClearColor(0, 0, 0, 0);
 		Gdx.gl20.glClear(Gdx.gl20.GL_COLOR_BUFFER_BIT);
-		
-		gameCam.position.set(player.getPosition(), 0);
+		//**
+		gameCam.position.set(player.getBody().getPosition(), 0);
 		gameCam.update();
 		
 		b2renderer.render(world, viewport.getCamera().combined);
