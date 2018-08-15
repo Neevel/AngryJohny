@@ -1,4 +1,4 @@
-package com.mygdx.screens.gamestateö.entities;
+package com.mygdx.screens.gamestate.entities;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
