@@ -34,13 +34,16 @@ public class GameWorld {
 		gameCam = new OrthographicCamera(); 
 		viewport = new FitViewport(Constants.V_WIDTH , Constants.V_HEIGHT, gameCam); 
 		world = new World(Constants.GRAVITY, true); 
-		player = new Player(Box2DUtils.createPlayer(world, new Vector2(3, 5), 1, 1));
-		ground = new Ground(Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1));
 		
+		input = new GameListener();
+		
+		player = new Player(Box2DUtils.createPlayer(world, new Vector2(3, 5), 1, 1), input);
+		player.setWidth(1f);
+		player.setHeight(1f);
+		
+		ground = new Ground(Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1, 1f));
 				
 		b2renderer = new Box2DDebugRenderer(); 
-		
-		input = new GameListener(player);
 		
 		world.setContactListener(new CollisionUtils(player));
 		Gdx.input.setInputProcessor(input);
@@ -57,7 +60,7 @@ public class GameWorld {
 		
 		batch.setProjectionMatrix(viewport.getCamera().combined);
 		batch.begin();
-
+			player.render(delta, batch);
 		batch.end();
 	}
 	

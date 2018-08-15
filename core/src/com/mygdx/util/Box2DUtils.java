@@ -54,13 +54,13 @@ public class Box2DUtils {
 		shape.dispose();
 	}
 	
-	public static Body createGround(World world, Vector2 position, float width, float height) {
+	public static Body createGround(World world, Vector2 position, float width, float height, float friction) {
 		BodyDef bdef = new BodyDef();
 		bdef.position.set(position);
 		bdef.type = BodyDef.BodyType.StaticBody;
 		
 		Body body = world.createBody(bdef);
-		createBox(body, width, height, 1, 0, 0);
+		createBox(body, width, height, 1, 0, friction);
 
 		return body;
 	}

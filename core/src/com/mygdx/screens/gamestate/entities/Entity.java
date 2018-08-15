@@ -10,6 +10,7 @@ public abstract class Entity {
 	protected Vector2 position;
 	protected Texture tex;
 	protected Body body;
+	protected float width, height;
 	
 	public Entity(Body body) {
 		this.body = body;
@@ -24,13 +25,16 @@ public abstract class Entity {
 		return position;
 	}
 
-	public Texture getTex() {
-		return tex;
-	}
-
 	public Body getBody() {
 		return body;
 	}
-
+	
+	public void setWidth(float width) {
+		this.width = width;
+	}
+	
+	public void setHeight(float height) {
+		this.height = height;
+	}
 
 }
