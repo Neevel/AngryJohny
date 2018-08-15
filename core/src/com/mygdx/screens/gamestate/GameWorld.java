@@ -50,7 +50,7 @@ public class GameWorld {
 	public void render(float delta) {
 		Gdx.gl20.glClearColor(0, 0, 0, 0);
 		Gdx.gl20.glClear(Gdx.gl20.GL_COLOR_BUFFER_BIT);
-		//**
+		
 		gameCam.position.set(player.getBody().getPosition(), 0);
 		gameCam.update();
 		

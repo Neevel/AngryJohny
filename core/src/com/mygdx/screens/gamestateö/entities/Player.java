@@ -38,7 +38,7 @@ public class Player extends Entity {
 		// Anweisung wenn der Spieler springt läuft
 		if (jump) {
 			body.setLinearDamping(10f);
-			body.applyLinearImpulse(new Vector2(0, 40f), getBody().getWorldCenter(), true);
+			body.applyLinearImpulse(new Vector2(0, 45f), getBody().getWorldCenter(), true);
 			Jump(false);
 		}
 		// Anweisung wenn der Spieler im Sprung ist
