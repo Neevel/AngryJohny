@@ -18,5 +18,5 @@ public class Ground extends Entity {
 	public void render(float delta, SpriteBatch batch) {
 		
 	}
-
+	
 }

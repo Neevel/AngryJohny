@@ -13,21 +13,29 @@ public class GameListener extends InputAdapter {
 
 	@Override
 	public boolean keyDown(int key) {
-		if(key == Keys.A) {
+		if((key == Keys.A | key == Keys.LEFT)) {
 			player.setLeft(true);
 		}
-		if(key == Keys.D) {
+		
+		if((key == Keys.D | key == Keys.RIGHT)) {
 			player.setRight(true);
 		}
+		
+		if(key == Keys.W | key == Keys.UP) {
+			if(player.getCanJump()) {
+				player.Jump(true);	
+			}	
+		}
+		
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int key) {
-		if(key == Keys.A) {
+		if(key == Keys.A | key == Keys.LEFT) {
 			player.setLeft(false);
 		}
-		if(key == Keys.D) {
+		if(key == Keys.D | key == Keys.RIGHT) {
 			player.setRight(false);
 		}
 		return false;

@@ -14,6 +14,7 @@ import com.mygdx.screens.gamestateö.entities.GameListener;
 import com.mygdx.screens.gamestateö.entities.Ground;
 import com.mygdx.screens.gamestateö.entities.Player;
 import com.mygdx.util.Box2DUtils;
+import com.mygdx.util.CollisionUtils;
 import com.mygdx.util.Constants;
 
 public class GameWorld {
@@ -41,6 +42,7 @@ public class GameWorld {
 		
 		input = new GameListener(player);
 		
+		world.setContactListener(new CollisionUtils(player));
 		Gdx.input.setInputProcessor(input);
 	}
 
