@@ -34,7 +34,7 @@ public class HUD {
 		this.gameworld = gameworld;
 		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		stage = new Stage(viewport);
-		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
+		skin = new Skin(Gdx.files.internal("uiskin.json"));
 
 		createHUD();
 	}

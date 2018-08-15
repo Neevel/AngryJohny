@@ -1,4 +1,4 @@
-package com.mygdx.screens.gamestateö.entities;
+package com.mygdx.screens.gamestate.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,6 +10,7 @@ public abstract class Entity {
 	protected Vector2 position;
 	protected Texture tex;
 	protected Body body;
+	protected float width, height;
 	
 	public Entity(Body body) {
 		this.body = body;
@@ -17,20 +18,23 @@ public abstract class Entity {
 		body.setUserData(this);
 	}
 	
-	protected abstract void update(float delta);
-	protected abstract void render(float delta, SpriteBatch batch);
+	public abstract void update(float delta);
+	public abstract void render(float delta, SpriteBatch batch);
 
 	public Vector2 getPosition() {
 		return position;
 	}
 
-	public Texture getTex() {
-		return tex;
-	}
-
 	public Body getBody() {
 		return body;
 	}
-
+	
+	public void setWidth(float width) {
+		this.width = width;
+	}
+	
+	public void setHeight(float height) {
+		this.height = height;
+	}
 
 }

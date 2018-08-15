@@ -5,7 +5,8 @@ package com.mygdx.screens.gamestate.entities;
  */
 public enum PlayerState {
 
-    STANDINGLEFT, STANDINGRIGHT, RUNNINGLEFT, RUNNINGRIGHT
+    STANDINGLEFT, STANDINGRIGHT, RUNLEFT, RUNRIGHT;
+
 
 
 

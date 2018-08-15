@@ -4,7 +4,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -17,10 +22,10 @@ public class Box2DUtils {
 		
 		Body body = world.createBody(bdef);
 		createBox(body, width, height, 1, 0, 0);
-
+		
 		return body;
 	}
-
+	
 	public static void createBox(Body body, float width, float height, float density, float restitution, float friction) {
 		FixtureDef fdef = new FixtureDef();
 		PolygonShape shape = new PolygonShape();
@@ -49,15 +54,16 @@ public class Box2DUtils {
 		shape.dispose();
 	}
 	
-	public static Body createGround(World world, Vector2 position, float width, float height) {
+	public static Body createGround(World world, Vector2 position, float width, float height, float friction) {
 		BodyDef bdef = new BodyDef();
 		bdef.position.set(position);
 		bdef.type = BodyDef.BodyType.StaticBody;
 		
 		Body body = world.createBody(bdef);
-		createBox(body, width, height, 1, 0, 0);
+		createBox(body, width, height, 1, 0, friction);
 
 		return body;
 	}
+
 	
 }
