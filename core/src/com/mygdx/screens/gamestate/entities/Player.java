@@ -35,7 +35,7 @@ public class Player extends Entity {
 		
 		if(input.getKeys()[Keys.W]) {
 			if(getCanJump()) {
-				body.applyLinearImpulse(new Vector2(0, 15f), body.getWorldCenter(), true);
+				body.applyLinearImpulse(new Vector2(0, 30f), body.getWorldCenter(), true);
 				setCanJump(false);
 			}	
 		}

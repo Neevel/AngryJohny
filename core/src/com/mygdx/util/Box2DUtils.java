@@ -25,7 +25,7 @@ public class Box2DUtils {
 		
 		return body;
 	}
-
+	
 	public static void createBox(Body body, float width, float height, float density, float restitution, float friction) {
 		FixtureDef fdef = new FixtureDef();
 		PolygonShape shape = new PolygonShape();
