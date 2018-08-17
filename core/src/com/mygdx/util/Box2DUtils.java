@@ -21,12 +21,12 @@ public class Box2DUtils {
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		
 		Body body = world.createBody(bdef);
-		createBox(body, width, height, 0.5f, 0, 0);
+		createBox(body, width, height, 0.5f, 0);
 		
 		return body;
 	}
 	
-	public static void createBox(Body body, float width, float height, float density, float restitution, float friction) {
+	public static void createBox(Body body, float width, float height, float density, float restitution) {
 		FixtureDef fdef = new FixtureDef();
 		PolygonShape shape = new PolygonShape();
 
@@ -34,13 +34,12 @@ public class Box2DUtils {
 		fdef.shape = shape;
 		fdef.density = density;
 		fdef.restitution = restitution;
-		//fdef.friction = friction;
 		
 		body.createFixture(fdef);
 		shape.dispose();
 	}
 	
-	public static void createCircle(Body body, float radius, float density, float restitution, float friction) {
+	public static void createCircle(Body body, float radius, float density, float restitution) {
 		FixtureDef fdef = new FixtureDef();
 		CircleShape shape = new CircleShape();
 		
@@ -48,19 +47,18 @@ public class Box2DUtils {
 		fdef.shape = shape;
 		fdef.density = density;
 		fdef.restitution = restitution;
-		fdef.friction = friction;
 		
 		body.createFixture(fdef);
 		shape.dispose();
 	}
 	
-	public static Body createGround(World world, Vector2 position, float width, float height, float friction) {
+	public static Body createGround(World world, Vector2 position, float width, float height) {
 		BodyDef bdef = new BodyDef();
 		bdef.position.set(position);
 		bdef.type = BodyDef.BodyType.StaticBody;
 		
 		Body body = world.createBody(bdef);
-		createBox(body, width, height, 1, 0, friction);
+		createBox(body, width, height, 1, 0);
 
 		return body;
 	}

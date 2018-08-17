@@ -41,7 +41,7 @@ public class GameWorld {
 		player.setWidth(2f);
 		player.setHeight(2.5f);
 		
-		ground = new Ground(Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1, 1f));
+		ground = new Ground(Box2DUtils.createGround(world, new Vector2(Constants.V_WIDTH/2, 2), Constants.V_WIDTH, 1));
 				
 		b2renderer = new Box2DDebugRenderer(); 
 		
