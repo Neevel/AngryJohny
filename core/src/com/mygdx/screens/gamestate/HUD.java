@@ -24,7 +24,13 @@ public class HUD {
 	private Label scoreLabel, livesLabel, levelLabel, levelZahl;
 	private Integer score = 0;
 	private Integer level = 1;
-	private Integer lifes = 3;
+
+
+    public void setLifes(Integer lifes) {
+        this.lifes = lifes;
+    }
+
+    private Integer lifes = 3;
 	private Table ingameTable;
 	FreeTypeFontGenerator generator;
 

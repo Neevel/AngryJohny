@@ -11,9 +11,10 @@ public class Constants {
 	// Virtuellesfenster
 	public static final float V_WIDTH = 20;
 	public static final float V_HEIGHT = 15;
+	public static final float PPM = WIDTH/V_WIDTH;
 	
 	// Box2D
 	public static final float TIME_STEP = 1 / 60f; 
-	public static final Vector2 GRAVITY = new Vector2(0, -80f); // ist im reallife auch so stark :D
+	public static final Vector2 GRAVITY = new Vector2(0, -9.81f*PPM); // ist im reallife auch so stark :D
 	
 }
