@@ -11,7 +11,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.screens.gamestate.GameListener;
 
-public class Player extends Entity { // hallo  hier ist eine gans
+public class Player extends Entity { // hallo  hier ist eine gans // hat die gans auch ein name ? 
 
 	private boolean canJump;
 	private GameListener input;
