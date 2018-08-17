@@ -93,12 +93,12 @@ public class Player extends Entity {
 		
 		if(Gdx.input.isKeyJustPressed(Keys.W)) {
 			if(getCanJump()) {
-				body.applyLinearImpulse(new Vector2(0, 120f), body.getWorldCenter(), true);
+				body.applyLinearImpulse(new Vector2(0, 70f), body.getWorldCenter(), true);
 
 				setCanJump(false);
 			}	
 		}
-		body.setLinearDamping(10f);
+		body.setLinearDamping(5f);
 
 
 				if (input.getKeys()[Keys.E]) {
