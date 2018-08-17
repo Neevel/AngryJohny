@@ -16,8 +16,8 @@ public class Player extends Entity {
 	private boolean canJump;
 	private GameListener input;
 
-	private Animation walk;
-	private Animation shoot;
+	private Animation<TextureRegion> walk;
+	private Animation<TextureRegion> shoot;
 
 	private TextureRegion[][] regions_walk;
 	private TextureRegion[][] regions_Shoot;
@@ -26,8 +26,6 @@ public class Player extends Entity {
 	private Array<TextureRegion> shootframes;
 
 	private boolean isShoot;
-
-	private PlayerState playerState;
 
 	private float stateTime;
 
@@ -38,7 +36,7 @@ public class Player extends Entity {
 		walkframes = new Array<TextureRegion>();
 
 		fillArray(regions_walk, walkframes);
-		walk = new Animation(0.1f,walkframes , Animation.PlayMode.LOOP);
+		walk = new Animation<TextureRegion>(0.1f,walkframes , Animation.PlayMode.LOOP);
 
 
 
@@ -46,15 +44,15 @@ public class Player extends Entity {
 		regions_Shoot = TextureRegion.split(tex, 250, 281);
 		shootframes = new Array<TextureRegion>();
 		fillArray(regions_Shoot, shootframes);
-		shoot = new Animation(0.1f,shootframes , Animation.PlayMode.NORMAL);
+		shoot = new Animation<TextureRegion>(0.1f,shootframes , Animation.PlayMode.NORMAL);
+		
 		this.input = input;
 	}
+	
 	public void fillArray(TextureRegion[][] regions, Array<TextureRegion> frames){
 		for(int i = 0; i < regions.length; i++){
 			for(int j = 0; j < regions[0].length; j++){
 				frames.add(regions[i][j]);
-
-
 			}
 		}
 
@@ -68,14 +66,13 @@ public class Player extends Entity {
 			walk.setPlayMode(Animation.PlayMode.LOOP);
 			body.applyLinearImpulse(new Vector2(-2.5f, 0f), body.getWorldCenter(), true);
 			
-			if(!((TextureRegion) walk.getKeyFrame(stateTime)).isFlipX()) {
-				((TextureRegion) walk.getKeyFrame(stateTime)).flip(true, false);
+			if(!(walk.getKeyFrame(stateTime)).isFlipX()) {
+				(walk.getKeyFrame(stateTime)).flip(true, false);
 
 							}
 
 		}else if(!input.getKeys()[Keys.A] ){
 			walk.setPlayMode(Animation.PlayMode.NORMAL);
-			playerState = PlayerState.RUNLEFT;
 		}else if(!input.getKeys()[Keys.D]) {
 			walk.setPlayMode(Animation.PlayMode.NORMAL);
 
@@ -85,8 +82,8 @@ public class Player extends Entity {
 
 			walk.setPlayMode(Animation.PlayMode.LOOP);
 			body.applyLinearImpulse(new Vector2(2.5f, 0f), body.getWorldCenter(), true);
-			if (((TextureRegion) walk.getKeyFrame(stateTime)).isFlipX()) {
-				((TextureRegion) walk.getKeyFrame(stateTime)).flip(true, false);
+			if ((walk.getKeyFrame(stateTime)).isFlipX()) {
+				(walk.getKeyFrame(stateTime)).flip(true, false);
 
 			}
 		}
@@ -102,11 +99,11 @@ public class Player extends Entity {
 
 
 				if (input.getKeys()[Keys.E]) {
-					if(((TextureRegion) shoot.getKeyFrame(stateTime)).isFlipX()) {
-						((TextureRegion) shoot.getKeyFrame(stateTime)).flip(true, false);
+					if((shoot.getKeyFrame(stateTime)).isFlipX()) {
+						(shoot.getKeyFrame(stateTime)).flip(true, false);
 					}else
-					if(!((TextureRegion) shoot.getKeyFrame(stateTime)).isFlipX()) {
-						((TextureRegion) shoot.getKeyFrame(stateTime)).flip(false, false);
+					if(!(shoot.getKeyFrame(stateTime)).isFlipX()) {
+						(shoot.getKeyFrame(stateTime)).flip(false, false);
 					}
 
 
@@ -123,10 +120,10 @@ public class Player extends Entity {
 	public void render(float delta, SpriteBatch batch) {
 		// player zeichnen
 		if(!isShoot) {
-			batch.draw((TextureRegion) walk.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
+			batch.draw(walk.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
 		}else
 
-		batch.draw((TextureRegion) shoot.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
+		batch.draw(shoot.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
 	}
 	
 	public void setCanJump(boolean canJump) {
