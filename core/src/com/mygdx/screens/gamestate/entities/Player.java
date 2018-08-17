@@ -66,7 +66,7 @@ public class Player extends Entity {
 		
 		if(input.getKeys()[Keys.A]) {
 			walk.setPlayMode(Animation.PlayMode.LOOP);
-			body.applyLinearImpulse(new Vector2(-1.5f, 0f), body.getWorldCenter(), true);
+			body.applyLinearImpulse(new Vector2(-2.5f, 0f), body.getWorldCenter(), true);
 			
 			if(!((TextureRegion) walk.getKeyFrame(stateTime)).isFlipX()) {
 				((TextureRegion) walk.getKeyFrame(stateTime)).flip(true, false);
@@ -84,7 +84,7 @@ public class Player extends Entity {
 		if(input.getKeys()[Keys.D]) {
 
 			walk.setPlayMode(Animation.PlayMode.LOOP);
-			body.applyLinearImpulse(new Vector2(1.5f, 0f), body.getWorldCenter(), true);
+			body.applyLinearImpulse(new Vector2(2.5f, 0f), body.getWorldCenter(), true);
 			if (((TextureRegion) walk.getKeyFrame(stateTime)).isFlipX()) {
 				((TextureRegion) walk.getKeyFrame(stateTime)).flip(true, false);
 

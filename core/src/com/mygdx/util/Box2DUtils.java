@@ -34,7 +34,7 @@ public class Box2DUtils {
 		fdef.shape = shape;
 		fdef.density = density;
 		fdef.restitution = restitution;
-		fdef.friction = friction;
+		//fdef.friction = friction;
 		
 		body.createFixture(fdef);
 		shape.dispose();
