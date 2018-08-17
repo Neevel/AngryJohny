@@ -33,7 +33,7 @@ public class Player extends Entity {
 
 	public Player(Body body, GameListener input) {
 		super(body);
-		tex = new Texture(Gdx.files.internal("textures/playerWalk.png"));
+		tex = new Texture(Gdx.files.internal("playerWalk.png"));
 		regions_walk = TextureRegion.split(tex, 250, 281);
 		walkframes = new Array<TextureRegion>();
 
@@ -42,7 +42,7 @@ public class Player extends Entity {
 
 
 
-		tex = new Texture(Gdx.files.internal("textures/playerShoot.png"));
+		tex = new Texture(Gdx.files.internal("playerShoot.png"));
 		regions_Shoot = TextureRegion.split(tex, 250, 281);
 		shootframes = new Array<TextureRegion>();
 		fillArray(regions_Shoot, shootframes);
@@ -67,8 +67,9 @@ public class Player extends Entity {
 		if(input.getKeys()[Keys.A]) {
 			walk.setPlayMode(Animation.PlayMode.LOOP);
 			body.applyLinearImpulse(new Vector2(-1.5f, 0f), body.getWorldCenter(), true);
-			if(!walk.getKeyFrame(stateTime).isFlipX()) {
-				walk.getKeyFrame(stateTime).flip(true, false);
+			
+			if(!((TextureRegion) walk.getKeyFrame(stateTime)).isFlipX()) {
+				((TextureRegion) walk.getKeyFrame(stateTime)).flip(true, false);
 
 							}
 
@@ -84,8 +85,8 @@ public class Player extends Entity {
 
 			walk.setPlayMode(Animation.PlayMode.LOOP);
 			body.applyLinearImpulse(new Vector2(1.5f, 0f), body.getWorldCenter(), true);
-			if (walk.getKeyFrame(stateTime).isFlipX()) {
-				walk.getKeyFrame(stateTime).flip(true, false);
+			if (((TextureRegion) walk.getKeyFrame(stateTime)).isFlipX()) {
+				((TextureRegion) walk.getKeyFrame(stateTime)).flip(true, false);
 
 			}
 		}
@@ -101,11 +102,11 @@ public class Player extends Entity {
 
 
 				if (input.getKeys()[Keys.E]) {
-					if(shoot.getKeyFrame(stateTime).isFlipX()) {
-						shoot.getKeyFrame(stateTime).flip(true, false);
+					if(((TextureRegion) shoot.getKeyFrame(stateTime)).isFlipX()) {
+						((TextureRegion) shoot.getKeyFrame(stateTime)).flip(true, false);
 					}else
-					if(!shoot.getKeyFrame(stateTime).isFlipX()) {
-						shoot.getKeyFrame(stateTime).flip(false, false);
+					if(!((TextureRegion) shoot.getKeyFrame(stateTime)).isFlipX()) {
+						((TextureRegion) shoot.getKeyFrame(stateTime)).flip(false, false);
 					}
 
 
@@ -122,10 +123,10 @@ public class Player extends Entity {
 	public void render(float delta, SpriteBatch batch) {
 		// player zeichnen
 		if(!isShoot) {
-			batch.draw(walk.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
+			batch.draw((TextureRegion) walk.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
 		}else
 
-		batch.draw(shoot.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
+		batch.draw((TextureRegion) shoot.getKeyFrame(stateTime), position.x - width / 2, position.y - height / 2, width, height);
 	}
 	
 	public void setCanJump(boolean canJump) {

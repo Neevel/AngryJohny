@@ -1,0 +1,33 @@
+
+Jonny_and_Shoot.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+playerShoot
+  rotate: false
+  xy: 1, 261
+  size: 911, 128
+  orig: 911, 128
+  offset: 0, 0
+  index: -1
+playerDrink
+  rotate: false
+  xy: 1, 131
+  size: 800, 128
+  orig: 800, 128
+  offset: 0, 0
+  index: -1
+playerWalk
+  rotate: false
+  xy: 1, 1
+  size: 342, 128
+  orig: 342, 128
+  offset: 0, 0
+  index: -1
+shootPunch
+  rotate: false
+  xy: 914, 359
+  size: 70, 30
+  orig: 70, 30
+  offset: 0, 0
+  index: -1
