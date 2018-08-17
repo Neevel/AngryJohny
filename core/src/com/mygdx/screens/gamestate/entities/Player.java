@@ -16,8 +16,8 @@ public class Player extends Entity {
 	private boolean canJump;
 	private GameListener input;
 
-	private Animation<TextureRegion> walk;
-	private Animation<TextureRegion> shoot;
+	private Animation walk;
+	private Animation shoot;
 
 	private TextureRegion[][] regions_walk;
 	private TextureRegion[][] regions_Shoot;
@@ -31,20 +31,20 @@ public class Player extends Entity {
 
 	public Player(Body body, GameListener input) {
 		super(body);
-		tex = new Texture(Gdx.files.internal("playerWalk.png"));
+		tex = new Texture(Gdx.files.internal("textures/playerWalk.png"));
 		regions_walk = TextureRegion.split(tex, 250, 281);
 		walkframes = new Array<TextureRegion>();
 
 		fillArray(regions_walk, walkframes);
-		walk = new Animation<TextureRegion>(0.1f,walkframes , Animation.PlayMode.LOOP);
+		walk = new Animation(0.1f,walkframes , Animation.PlayMode.LOOP);
 
 
 
-		tex = new Texture(Gdx.files.internal("playerShoot.png"));
+		tex = new Texture(Gdx.files.internal("textures/playerShoot.png"));
 		regions_Shoot = TextureRegion.split(tex, 250, 281);
 		shootframes = new Array<TextureRegion>();
 		fillArray(regions_Shoot, shootframes);
-		shoot = new Animation<TextureRegion>(0.1f,shootframes , Animation.PlayMode.NORMAL);
+		shoot = new Animation(0.1f,shootframes , Animation.PlayMode.NORMAL);
 		
 		this.input = input;
 	}
@@ -88,7 +88,7 @@ public class Player extends Entity {
 			}
 		}
 		
-		if(Gdx.input.isKeyJustPressed(Keys.W)) {
+		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
 			if(getCanJump()) {
 				body.applyLinearImpulse(new Vector2(0, 70f), body.getWorldCenter(), true);
 
