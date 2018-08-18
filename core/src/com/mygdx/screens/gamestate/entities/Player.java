@@ -64,7 +64,7 @@ public class Player extends Entity {
 		
 		if(input.getKeys()[Keys.A]) {
 			walk.setPlayMode(Animation.PlayMode.LOOP);
-			body.applyLinearImpulse(new Vector2(-40.5f, 0f), body.getWorldCenter(), true);
+			body.applyLinearImpulse(new Vector2(-2.5f, 0f), body.getWorldCenter(), true);
 			
 			if(!(walk.getKeyFrame(stateTime)).isFlipX()) {
 				(walk.getKeyFrame(stateTime)).flip(true, false);
@@ -81,7 +81,7 @@ public class Player extends Entity {
 		if(input.getKeys()[Keys.D]) {
 
 			walk.setPlayMode(Animation.PlayMode.LOOP);
-			body.applyLinearImpulse(new Vector2(40.5f, 0f), body.getWorldCenter(), true);
+			body.applyLinearImpulse(new Vector2(2.5f, 0f), body.getWorldCenter(), true);
 			if ((walk.getKeyFrame(stateTime)).isFlipX()) {
 				(walk.getKeyFrame(stateTime)).flip(true, false);
 
@@ -90,12 +90,12 @@ public class Player extends Entity {
 		
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
 			if(getCanJump()) {
-				body.applyLinearImpulse(new Vector2(0, 900f), body.getWorldCenter(), true);
+				body.applyLinearImpulse(new Vector2(0, 70f), body.getWorldCenter(), true);
 
 				setCanJump(false);
 			}	
 		}
-		body.setLinearDamping(10f);
+		body.setLinearDamping(5f);
 
 
 				if (input.getKeys()[Keys.E]) {
