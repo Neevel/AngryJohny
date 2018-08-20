@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -28,8 +31,12 @@ public class GameWorld {
 	private Ground ground;
 	
 	private GameListener input;
-	
-	public GameWorld() {
+
+    private TmxMapLoader mapLoader;
+    private TiledMap map;
+    private OrthogonalTiledMapRenderer renderer;
+
+    public GameWorld() {
 		batch = ((AJGame) Gdx.app.getApplicationListener()).getBatch(); 
 		gameCam = new OrthographicCamera(); 
 		viewport = new FitViewport(Constants.V_WIDTH , Constants.V_HEIGHT, gameCam); 
@@ -47,6 +54,10 @@ public class GameWorld {
 		
 		world.setContactListener(new CollisionUtils(player));
 		Gdx.input.setInputProcessor(input);
+
+		mapLoader = new TmxMapLoader();
+		map = mapLoader.load("angry.tmx");
+		renderer = new OrthogonalTiledMapRenderer(map);
 	}
 
 	public void render(float delta) {
@@ -55,6 +66,7 @@ public class GameWorld {
 		
 		gameCam.position.set(player.getBody().getPosition(), 0);
 		gameCam.update();
+		renderer.render();
 		
 		b2renderer.render(world, viewport.getCamera().combined);
 		
@@ -67,6 +79,7 @@ public class GameWorld {
 	public void update(float delta) {
 		player.update(delta);
 		world.step(Constants.TIME_STEP, 8, 3);
+		renderer.setView((OrthographicCamera) gameCam);
 	}
 	
 	public void dispose() {

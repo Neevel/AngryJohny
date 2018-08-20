@@ -4,8 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
@@ -24,6 +28,10 @@ public class Player extends Entity {
 
 	private Array<TextureRegion> walkframes;
 	private Array<TextureRegion> shootframes;
+
+
+
+
 
 	private boolean isShoot;
 
@@ -47,7 +55,8 @@ public class Player extends Entity {
 		shoot = new Animation(0.1f,shootframes , Animation.PlayMode.NORMAL);
 		
 		this.input = input;
-	}
+
+    }
 	
 	public void fillArray(TextureRegion[][] regions, Array<TextureRegion> frames){
 		for(int i = 0; i < regions.length; i++){
@@ -65,7 +74,7 @@ public class Player extends Entity {
 		if(input.getKeys()[Keys.A]) {
 			walk.setPlayMode(Animation.PlayMode.LOOP);
 			body.applyLinearImpulse(new Vector2(-2.5f, 0f), body.getWorldCenter(), true);
-			
+
 			if(!(walk.getKeyFrame(stateTime)).isFlipX()) {
 				(walk.getKeyFrame(stateTime)).flip(true, false);
 
